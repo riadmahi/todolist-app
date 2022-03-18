@@ -1,0 +1,25 @@
+<div class="branding">
+    <img class="brandimg" src="../../assets/Brand.svg">
+    <p class="brandname">todolist</p>
+</div>
+<div class="container">
+    <h1>Inscrivez-vous et devenez encore plus productif!</h1>
+    
+    <input class="input-v1"#name type="text" placeholder="Nom fun" required>
+    <input class="input-v1" #email type="email" placeholder="Email" required>
+    <input class="input-v1" #password type="password" placeholder="Password" required>
+    <div class="container-interaction">
+        <div class="buttons">
+            <button class="learn-more" (click)="signUp(name.value, email.value, password.value)">
+                <span class="circle" aria-hidden="true">
+                  <span class="icon arrow"></span>
+                </span>
+                <span class="button-text">S'inscrire</span>
+              </button>
+        </div>
+
+        <p [routerLink]="['/sign-in']">J'ai déjà un compte</p>
+
+    </div>
+
+</div>

@@ -1,0 +1,24 @@
+<div class="branding">
+    <img class="brandimg" src="../../assets/Brand.svg">
+    <p class="brandname">todolist</p>
+</div>
+<div class="container">
+    <h1>Créez et gérez votre todolist simplement</h1>
+    <h2>Connectez-vous</h2>
+    <input class="input-v1" #email type="email" placeholder="Email" required>
+    <input class="input-v1" #password type="password" placeholder="Password" required>
+    <div class="container-interaction">
+        <div class="buttons">
+            <button (click)="signIn(email.value, password.value)"  class="learn-more">
+                <span class="circle" aria-hidden="true">
+                  <span class="icon arrow"></span>
+                </span>
+                <span class="button-text">Se connecter</span>
+              </button>
+        </div>
+
+        <p [routerLink]="['/sign-up']">Créer un compte</p>
+
+    </div>
+
+</div>

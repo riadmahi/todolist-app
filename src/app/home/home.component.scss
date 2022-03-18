@@ -1,0 +1,85 @@
+.toolbar{
+    width: 100%;
+    height: 10vh;
+}
+
+.profile-photo{
+    display: inline-block;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    background-position: center center;
+  background-repeat: no-repeat;
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  margin-left: 20px;
+
+}
+.profile-info{
+    
+    display: inline-block;
+    margin-left: 20px;
+    position: relative;
+    top: 40%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+
+  
+}
+
+.name{
+    font-weight: 600;
+    line-height: 0;
+}
+
+.greeting{
+    list-style: none;
+}
+
+
+
+.button-settings{
+    text-align: end;
+    justify-content: end;
+    display: inline-block;
+    width: 60%;
+    height: 50px;
+    top: 40%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.todo-list-container{
+    width: 100%;
+    height: 80%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+    margin: 20px;
+    margin-bottom: 10px;
+}
+
+.todo-img{
+    width: 95%;
+    height: 70%;
+    margin: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+    object-fit: cover;
+    
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.title{
+    margin: 10px;
+    font-weight: 600;
+}

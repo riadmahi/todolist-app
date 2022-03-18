@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "todolistapp-39f3b": {
+      "hosting": {
+        "todolist-app": [
+          "todolistapp-39f3b"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "todolistapp-39f3b"
+  }
+}
