@@ -115,6 +115,37 @@
             "firebaseProject": "todolistapp-39f3b",
             "firebaseHostingSite": "todolistapp-39f3b"
           }
+        },
+        "cypress-run": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "devServerTarget": "todolist-app:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "todolist-app:serve:production"
+            }
+          }
+        },
+        "cypress-open": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "watch": true,
+            "headless": false
+          }
+        },
+        "e2e": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "devServerTarget": "todolist-app:serve",
+            "watch": true,
+            "headless": false
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "todolist-app:serve:production"
+            }
+          }
         }
       }
     }
