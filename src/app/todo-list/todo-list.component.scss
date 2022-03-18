@@ -1,10 +1,14 @@
-$bgInputColor : #F1F2F8;
-h1{
+$bgInputColor : #FFB1B1;
+
+body{
+    font-family: "Poppins" !important;
+    background-color: $bgInputColor !important;
+
 }
 
 .input-container{
     margin: auto;
-  width: 50%;
+  width: 70%;
   padding: 10px;
 }
 
@@ -13,11 +17,14 @@ h1{
     width: 100%;
     text-align: center;
     background-color: white;
+    font-family: "Poppins" !important;
+
 }
 input{
+    font-family: "Poppins" !important;
 
     padding: 20px;
-    background-color: #E4DCFD;
+    background-color: $bgInputColor;
     border-radius: 5px;
     width: 100%;
     text-align: center;
