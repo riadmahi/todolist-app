@@ -25,7 +25,7 @@ const routes: Routes = [
   {
     path:"todolist/:id",
     component: TodoComponent,
-    
+
     canActivate: [AuthGuard]
   }
 

@@ -16,14 +16,14 @@ export interface History<T> {
 })
 
 export class HistoryService {
-  private subj = new BehaviorSubject<History<TodoList>>({canUndo: false, canRedo: false, history: [], currentIndex: history.length, current: {label: 'L3 MIAGE', items: [] }});
+  private subj = new BehaviorSubject<History<TodoList>>({canUndo: false, canRedo: false, history: [], currentIndex: history.length, current: {id:"", photo: "", label: 'L3 MIAGE', items: []  }});
   readonly observable = this.subj.asObservable();
   constructor() {
 
   }
 
   undo(): TodoList{
-    let todo: TodoList = {label: 'L3 MIAGE', items: [] };
+    let todo: TodoList = {id:"", photo: "", label: 'L3 MIAGE', items: [] };
     this.subj.subscribe(obs =>{
       obs.currentIndex--;
       obs.current = obs.history[obs.currentIndex]
@@ -34,7 +34,7 @@ export class HistoryService {
   }
 
   redo(): TodoList{
-    let todo: TodoList = {label: 'L3 MIAGE', items: [] };
+    let todo: TodoList = {id:"", photo: "", label: 'L3 MIAGE', items: [] };
     this.subj.subscribe(obs =>{
       obs.currentIndex++;
       obs.current = obs.history[obs.currentIndex]

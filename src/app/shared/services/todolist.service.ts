@@ -8,7 +8,9 @@ export interface TodoItem {
 }
 
 export interface TodoList {
+  readonly id: string;
   readonly label: string;
+  readonly photo: string;
   readonly items: readonly TodoItem[];
 }
 
@@ -18,11 +20,10 @@ let idItem = 0;
   providedIn: 'root'
 })
 export class TodolistService {
-  private subj = new BehaviorSubject<TodoList>({label: 'L3 MIAGE', items: [] });
+  private subj = new BehaviorSubject<TodoList>({id:"", label: 'L3 MIAGE', photo: "", items: [] });
   readonly observable = this.subj.asObservable();
 
   constructor() {
-
     this.retrieveLocalData();
   }
 

@@ -8,12 +8,15 @@
     <p class="button-settings">Gérer mon compte</p>
 
 </div>
+<button class="button" (click)="db.CreateTodoList()">Create a todolist</button>
+
 
 <mat-grid-list cols="4" rowHeight="2:2">
-    <mat-grid-tile>
-        <div class="todo-list-container">
-            <img class="todo-img" src="https://images.unsplash.com/photo-1640622661329-67f406a77d53?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60">
-            <p class="title">Todo list title</p>
+    <mat-grid-tile *ngFor="let todolist of todolists ">
+        <div routerLink="/todolist/{{todolist.id}}" class="todo-list-container">
+            <img class="todo-img" src="{{todolist.photo}}">
+            <p class="title">{{todolist.label}}</p>
         </div>
     </mat-grid-tile>
 </mat-grid-list>
+
