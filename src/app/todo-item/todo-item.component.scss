@@ -148,11 +148,11 @@ img{
 .error-btn{
     display: block;
     padding: 10px;
-    width: 30px;
-    float: right;
+    // width: 30px;
+    // height: auto;
+    // float: right;
     margin-top: -15px;
-    height: 30px;
-    background-color: #FF7D7D;
+    /* background-color: #FF7D7D; */
     border-radius: 50px;
     visibility: hidden;
     &::after{
@@ -183,7 +183,7 @@ img{
     display: block;
     padding: 10px;
     width: 30px;
-    float: right;
+    // float: right;
     margin-right: 20px;
     margin-top: -15px;
     height: 30px;
@@ -213,7 +213,7 @@ img{
     }
 }
 .trash{
-    height: 100%;
+  height: 100%;
   width: 100%;
   
   display:flex;
@@ -254,4 +254,24 @@ img{
     &:hover::after {
         opacity: 1;
     }
+}
+
+
+
+
+
+.error-btn, .edit-btn {
+    width: 40px;
+    height: auto;
+}
+
+.matcheckbox {
+    display: flex;
+    justify-content: space-between;
+}
+
+.btnAction {
+    width: 100px;
+    display: flex;
+    justify-content: space-between;
 }
