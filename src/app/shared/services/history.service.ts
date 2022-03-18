@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { TodoList } from './todolist.service';
+import { TodoList, TodolistService } from './todolist.service';
 
 
 export interface History<T> { 
@@ -18,8 +18,8 @@ export interface History<T> {
 export class HistoryService {
   private subj = new BehaviorSubject<History<TodoList>>({canUndo: false, canRedo: false, history: [], currentIndex: history.length, current: {id:"", photo: "", label: 'L3 MIAGE', items: []  }});
   readonly observable = this.subj.asObservable();
-  constructor() {
-
+  constructor(public todolistService: TodolistService) {
+      
   }
 
   undo(): TodoList{
@@ -39,7 +39,6 @@ export class HistoryService {
       obs.currentIndex++;
       obs.current = obs.history[obs.currentIndex]
       todo = obs.current;
-      
     }
     );
     return todo;
@@ -53,7 +52,7 @@ export class HistoryService {
     this.subj.subscribe(obs=> {
       console.log("J'ajoute une todo dans mon history");
       obs.history.push(todoList);
-      obs.currentIndex = obs.currentIndex++;
+      obs.currentIndex = obs.currentIndex;
       obs.current = todoList;
     }).unsubscribe;
   }
@@ -72,7 +71,7 @@ export class HistoryService {
   checkIfICanRedo(): boolean{
     let canRedo = false;
     this.subj.subscribe(obs=> {
-      if(obs.history.length > 0 && obs.currentIndex !== obs.history.length){
+      if(obs.history.length > 0 && obs.currentIndex !== obs.history.length-1){
         canRedo = true;
       }
     }).unsubscribe;

@@ -53,7 +53,6 @@ export class TodolistService {
   update(data: Partial<TodoItem>, ...items: readonly TodoItem[]): this {
     
     if(data.label !== "") {
-      
       const L = this.subj.value;
       this.subj.next( {
         ...L,
@@ -61,9 +60,7 @@ export class TodolistService {
         
       } );
     } else {
-
       this.delete(...items);
-      
     }
     return this;
   }
