@@ -1,8 +1,16 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { HistoryService } from '../shared/services/history.service';
 import { TodoItem, TodoList, TodolistService } from '../shared/services/todolist.service';
 
 type FctFilter = (item: TodoItem) => boolean;
+interface TodoListPlus extends TodoList {
+    remaining: number,
+    filter: FctFilter,
+    displayedItems: readonly TodoItem[],
+    allIsDone: boolean,
+};
 
 @Component({
   selector: 'app-todo-list',
@@ -15,7 +23,24 @@ export class TodoListComponent {
   @Input() todoList! : TodoList;
   public canUndo = false;
   public canRedo = false;
+
+  readonly fAll: FctFilter = () => true;
+  readonly fCompleted: FctFilter = (item) => item.isDone;
+  readonly fActive: FctFilter = (item) => !item.isDone;
+  private fCurrent = new BehaviorSubject<FctFilter>(this.fAll);
+  readonly todoObs: Observable<TodoListPlus>;
+
   constructor(public toDoService: TodolistService,  public historyService: HistoryService) { 
+    this.todoObs = combineLatest([toDoService.observable, this.fCurrent]).pipe(
+      map( ([L, f]) => ({
+        ...L,
+        remaining: L.items.reduce( (nb, item) => item.isDone ? nb : nb++, 0 ),
+        filter: f,
+        displayedItems: L.items.filter(f),
+        allIsDone: !L.items.find( it => !it.isDone ),
+      }) )
+    );
+
     toDoService.updateTodoList(this.todoList);
     toDoService.observable.subscribe(obs =>{
       this.saveDataLocally(obs);
@@ -56,15 +81,7 @@ export class TodoListComponent {
     this.toDoService.updateTodoList(todo);
   }
 
-  getAllToDo() {
-    
-  }
-
-  getActiveToDo() {
-
-  }
-
-  getCompletedToDo() {
-
+  setFilter(f:FctFilter) {
+    this.fCurrent.next(f);
   }
 }

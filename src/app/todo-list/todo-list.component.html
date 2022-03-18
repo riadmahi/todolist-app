@@ -6,16 +6,16 @@
 </div>
 
 
-<ul *ngIf="this.toDoService.observable | async as tds">
-    <li class="li-todo" *ngFor="let item of tds.displayedItems">
+<ul *ngIf="this.todoObs | async as TDL">
+    <li class="li-todo" *ngFor="let item of TDL.displayedItems">
         <app-todo-item [item]="item" (update)="updateItem($event, item)" (remove)="removeItem($event)"></app-todo-item>
     </li>
 
     <div>
-        <p> {{ tds.remaining }} items left </p>
-        <button mat-button [class.selected]="tds.filter === fAll" (click)="setFilter(fALL)">All</button> <!-- [disabled]="true" -->
-        <button mat-button [class.selected]="tds.filter === fActive" (click)="getActiveToDo()">Acive</button>  
-        <button mat-button [class.selected]="tds.filter === fCompleted"(click)="getCompletedToDo()">Completed</button>
+        <p> {{ TDL.remaining }} items left </p>
+        <button mat-button [class.selected]="TDL.filter === fAll" (click)="setFilter(fAll)">All</button> <!-- [disabled]="true" -->
+        <button mat-button [class.selected]="TDL.filter === fActive" (click)="setFilter(fActive)">Acive</button>  
+        <button mat-button [class.selected]="TDL.filter === fCompleted"(click)="setFilter(fCompleted)">Completed</button>
     </div>
 </ul>
 
