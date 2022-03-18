@@ -2,6 +2,8 @@ import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core
 import { HistoryService } from '../shared/services/history.service';
 import { TodoItem, TodoList, TodolistService } from '../shared/services/todolist.service';
 
+type FctFilter = (item: TodoItem) => boolean;
+
 @Component({
   selector: 'app-todo-list',
   templateUrl: './todo-list.component.html',
@@ -34,7 +36,6 @@ export class TodoListComponent {
     //Ajout d'une nouvelle task
     this.toDoService.create(task.value);
     task.value = "";
-
   }
 
   updateItem(newItem: TodoItem, item: TodoItem ){
@@ -53,5 +54,17 @@ export class TodoListComponent {
   clickRedo(){
     let todo = this.historyService.redo();
     this.toDoService.updateTodoList(todo);
+  }
+
+  getAllToDo() {
+    
+  }
+
+  getActiveToDo() {
+
+  }
+
+  getCompletedToDo() {
+
   }
 }
