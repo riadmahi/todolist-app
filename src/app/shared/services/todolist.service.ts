@@ -24,7 +24,7 @@ export class TodolistService {
   readonly observable = this.subj.asObservable();
 
   constructor() {
-    this.retrieveLocalData();
+    //this.retrieveLocalData();
   }
 
   create(...labels: readonly string[]): this {
