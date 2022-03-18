@@ -41,8 +41,9 @@ export class TodoListComponent {
       }) )
     );
 
-    toDoService.updateTodoList(this.todoList);
-    toDoService.observable.subscribe(obs =>{
+    // toDoService.updateTodoList(this.todoList);
+
+    this.todoObs.subscribe(obs =>{
       this.saveDataLocally(obs);
       obs.items.map(e =>console.log(e));      
       this.canRedo = this.historyService.checkIfICanRedo();
