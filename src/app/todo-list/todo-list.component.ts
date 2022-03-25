@@ -34,13 +34,13 @@ export class TodoListComponent {
     this.todoObs = combineLatest([toDoService.observable, this.fCurrent]).pipe(
       map( ([L, f]) => ({
         ...L,
-        remaining: L.items.reduce( (nb, item) => item.isDone ? nb : nb++, 0 ),
+        remaining: L.items.reduce( (acc, item) => item.isDone ? acc : acc++, 0),        
         filter: f,
         displayedItems: L.items.filter(f),
-        allIsDone: !L.items.find( it => !it.isDone ),
+        allIsDone: !L.items.find( item => !item.isDone ),
       }) )
     );
-
+    
     // toDoService.updateTodoList(this.todoList);
 
     this.todoObs.subscribe(obs =>{
